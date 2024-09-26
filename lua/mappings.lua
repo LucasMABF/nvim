@@ -67,6 +67,6 @@ map("n", "<leader>w+", '<C-w>+', {desc = "increase height split"})
 map("n", "<leader>w-", '<C-w>-', {desc = "decrease height split"})
 map("n", "<leader>w>", '<C-w>>', {desc = "increase width split"})
 map("n", "<leader>w<", '<C-w><', {desc = "decrease width split"})
-map("n", "<leader>j", '<C-d>zz', {desc = "jumps half a page down"})
-map("n", "<leader>k", '<C-u>zz', {desc = "jumps half a page up"})
+map("n", "<leader>d", '<C-d>zz', {desc = "jumps half a page down"})
+map("n", "<leader>u", '<C-u>zz', {desc = "jumps half a page up"})
 
