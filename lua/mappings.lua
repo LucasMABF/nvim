@@ -54,20 +54,19 @@ map("n", "<leader>l", "<C-w>l", { desc = "switch window right" })
 map("n", "<leader>j", "<C-w>j", { desc = "switch window down" })
 map("n", "<leader>k", "<C-w>k", { desc = "switch window up" })
 map("n", "<leader>s", "<cmd>w<CR>", { desc = "save file" })
+map("n", "<leader>S", "<cmd>wa!<CR>", { desc = "save all files force"})
 map("n", "U", "<C-r>", {desc = "redo"})
-map("n", "<leader>zo", "<cmd>tabnew %<CR>", {desc = "zoom window"});
-map("n", "<leader>zc", "<cmd>tabclose<CR>", {desc = "unzoom window"});
-map("n", "<leader>y", '"+yy"', {desc = "yank to sistem clipboard"});
-map("v", "<leader>y", '"+y"', {desc = "yank to sistem clipboard"});
-map("n", "<leader>p", '"+p', {desc = "paste from sistem clipboard"});
-map("n", "<leader>q", '<cmd>q<CR>', {desc = "quits buffer"});
-map("n", "<leader>w+", '<C-w>+', {desc = "increase height split"});
-map("n", "<leader>w-", '<C-w>-', {desc = "decrease height split"});
-map("n", "<leader>w>", '<C-w>>', {desc = "increase width split"});
-map("n", "<leader>w<", '<C-w><', {desc = "decrease width split"});
-
-
--- todo run code
-map("n", "<leader>r", "<C-r>", { desc = "redo" })
-
+map("n", "<leader>zo", "<cmd>tabnew %<CR>", {desc = "zoom window"})
+map("n", "<leader>zc", "<cmd>tabclose<CR>", {desc = "unzoom window"})
+map("n", "<leader>y", '"+yy"', {desc = "yank to sistem clipboard"})
+map("v", "<leader>y", '"+y"', {desc = "yank to sistem clipboard"})
+map("n", "<leader>p", '"+p', {desc = "paste from sistem clipboard"})
+map("n", "<leader>q", '<cmd>qa<CR>', {desc = "quits all buffers"})
+map("n", "<leader>Q", '<cmd>qa!<CR>', {desc = "quits all buffers force"})
+map("n", "<leader>w+", '<C-w>+', {desc = "increase height split"})
+map("n", "<leader>w-", '<C-w>-', {desc = "decrease height split"})
+map("n", "<leader>w>", '<C-w>>', {desc = "increase width split"})
+map("n", "<leader>w<", '<C-w><', {desc = "decrease width split"})
+map("n", "<leader>j", '<C-d>zz', {desc = "jumps half a page down"})
+map("n", "<leader>k", '<C-u>zz', {desc = "jumps half a page up"})
 
