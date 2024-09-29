@@ -29,7 +29,35 @@ unmap({"n", "t"}, "<A-v>")
 unmap({"n", "t"}, "<A-h>")
 unmap({"n", "t"}, "<A-i>")
 unmap("n", "<leader>cc")
+unmap("n", "<leader>ds")
+unmap("n", "<leader>/")
+unmap("n", "<leader>cm")
 
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    vim.schedule(function()
+      unmap('n', '<leader>ra', {buffer = args.buf})
+      unmap('n', '<leader>sh', {buffer = args.buf})
+      unmap('n', '<leader>D', {buffer = args.buf})
+      unmap("n", "<leader>wa", {buffer = args.buf})
+      unmap("n", "<leader>wl", {buffer = args.buf})
+      unmap("n", "<leader>wr", {buffer = args.buf})
+      unmap("n", "<leader>ca", {buffer = args.buf})
+
+      map("n", "<leader>LD", vim.lsp.buf.type_definition, {buffer = args.buf, desc = "Go to Type Definition"})
+      map("n", "<leader>Lca", vim.lsp.buf.code_action, {buffer = args.buf, desc = "LSP code actions"})
+    end)
+  end
+})
+
+require("gitsigns").setup{
+  on_attach = function(bufnr)
+    map('n', '<leader>gd', package.loaded.gitsigns.reset_hunk, {buffer = bufnr, desc = "Discard Hunk change"})
+    map('n', '<leader>gp', package.loaded.gitsigns.preview_hunk, {buffer = bufnr, desc = "Preview Hunk"})
+    map('n', '<leader>gb', package.loaded.gitsigns.blame_line, {buffer = bufnr, desc = "Blame Line"})
+  end
+}
 
 
 -- custom mapings
@@ -58,9 +86,10 @@ map("n", "<leader>S", "<cmd>wa!<CR>", { desc = "save all files force"})
 map("n", "U", "<C-r>", {desc = "redo"})
 map("n", "<leader>zo", "<cmd>tabnew %<CR>", {desc = "zoom window"})
 map("n", "<leader>zc", "<cmd>tabclose<CR>", {desc = "unzoom window"})
-map("n", "<leader>y", '"+yy"', {desc = "yank to sistem clipboard"})
-map("v", "<leader>y", '"+y"', {desc = "yank to sistem clipboard"})
+map("n", "<leader>y", '"+y', {desc = "yank to sistem clipboard"})
+map("v", "<leader>y", '"+y', {desc = "yank to sistem clipboard"})
 map("n", "<leader>p", '"+p', {desc = "paste from sistem clipboard"})
+map("n", "<leader>P", '"+P', {desc = "paste from sistem clipboard"})
 map("n", "<leader>q", '<cmd>qa<CR>', {desc = "quits all buffers"})
 map("n", "<leader>Q", '<cmd>qa!<CR>', {desc = "quits all buffers force"})
 map("n", "<leader>w+", '<C-w>+', {desc = "increase height split"})
@@ -69,4 +98,12 @@ map("n", "<leader>w>", '<C-w>>', {desc = "increase width split"})
 map("n", "<leader>w<", '<C-w><', {desc = "decrease width split"})
 map("n", "<leader>d", '<C-d>zz', {desc = "jumps half a page down"})
 map("n", "<leader>u", '<C-u>zz', {desc = "jumps half a page up"})
+map("n", "<leader>Ld", vim.diagnostic.setloclist, {desc = "LSP Diagnostic loclist"})
+
+map("v", "J", ":m '>+1<CR>gv=gv", {desc = "moves selected text down"})
+map("v", "K", ":m '<-2<CR>gv=gv", {desc = "moves selected text down"})
+map("n", "J", "mzJ`z", {desc = "keeps cursor on same position on J"})
+map("n", "<leader>d", '"_d', {desc = "deletes without saving to register"})
+map("v", "<leader>d", '"_d', {desc = "deletes without saving to register"})
+map("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {desc = "replaces word on cursor"})
 
