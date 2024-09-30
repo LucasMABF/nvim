@@ -16,7 +16,14 @@ return {
   {
   	"nvim-treesitter/nvim-treesitter",
   	opts = {
-  		ensure_installed = "all",
+      auto_install = true,
+  		ensure_installed = {
+  			"vim", "lua", "vimdoc",
+        "html", "css", "rust", "c",
+        "markdown", "markdown_inline",
+        "diff", "asm", "bash", "powershell" -- diff for telescope commits 
+  		},
+      silent = true,
   	},
   },
   {
