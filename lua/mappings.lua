@@ -37,13 +37,16 @@ unmap("n", "<leader>cm")
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     vim.schedule(function()
-      unmap('n', '<leader>ra', {buffer = args.buf})
-      unmap('n', '<leader>sh', {buffer = args.buf})
-      unmap('n', '<leader>D', {buffer = args.buf})
-      unmap("n", "<leader>wa", {buffer = args.buf})
-      unmap("n", "<leader>wl", {buffer = args.buf})
-      unmap("n", "<leader>wr", {buffer = args.buf})
-      unmap("n", "<leader>ca", {buffer = args.buf})
+      if not args.file:match([[%.rs$]]) then
+
+        unmap('n', '<leader>ra', {buffer = args.buf})
+        unmap('n', '<leader>sh', {buffer = args.buf})
+        unmap('n', '<leader>D', {buffer = args.buf})
+        unmap("n", "<leader>wa", {buffer = args.buf})
+        unmap("n", "<leader>wl", {buffer = args.buf})
+        unmap("n", "<leader>wr", {buffer = args.buf})
+        unmap("n", "<leader>ca", {buffer = args.buf})
+      end
 
       map("n", "<leader>LD", vim.lsp.buf.type_definition, {buffer = args.buf, desc = "Go to Type Definition"})
       map("n", "<leader>Lca", vim.lsp.buf.code_action, {buffer = args.buf, desc = "LSP code actions"})

@@ -5,6 +5,7 @@ vim.wo.relativenumber = true
 vim.wo.number = true
 vim.o.scrolloff = 10
 vim.o.wrap = false
+vim.o.sidescrolloff = 10
 
 
 local os = vim.loop.os_uname().sysname
